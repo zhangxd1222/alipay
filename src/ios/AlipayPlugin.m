@@ -9,10 +9,6 @@
 -(void)pluginInitialize{
     CDVViewController *viewController = (CDVViewController *)self.viewController;
     self.partner = [viewController.settings objectForKey:@"partner"];
-    if ([self.partner length] == 0)
-    {
-        self.partner=@"2088421496998491";
-    }
 }
 
 - (void) pay:(CDVInvokedUrlCommand*)command
