@@ -9,26 +9,15 @@
 -(void)pluginInitialize{
     CDVViewController *viewController = (CDVViewController *)self.viewController;
     self.partner = [viewController.settings objectForKey:@"partner"];
+    if ([self.partner length] == 0)
+    {
+        self.partner=@"2088421496998491";
+    }
 }
 
 - (void) pay:(CDVInvokedUrlCommand*)command
 {
     self.currentCallbackId = command.callbackId;
-
-    /*
-     *商户的唯一的parnter
-     */
-    if ([self.partner length] == 0)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:@"缺少partner"
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-
     /*
      *生成订单信息及签名
      */
